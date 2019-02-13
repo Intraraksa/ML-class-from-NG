@@ -52,17 +52,30 @@ error_val   = zeros(m, 1);
 %
 
 % ---------------------- Sample Solution ----------------------
-X = [ones(m,1) X];
+%<<<<<<< HEAD
+%X = [ones(m,1) X];
 %Xval = [ones(m,1) Xval];
-[theta] = trainLinearReg(X, y, lambda);
-for i = 1:m,
-  error_train(i,1) = (1/(2*m))*sum(((X(i,:)*theta)-y(i,1)).^2)
-endfor
+%[theta] = trainLinearReg(X, y, lambda);
+%for i = 1:m,
+%  error_train(i,1) = (1/(2*m))*sum(((X(i,:)*theta)-y(i,1)).^2)
+%endfor
 %[theta] = trainLinearReg(Xval, yval, lambda);
 %for j = 1:m,
 %  error_val(j,1) = (1/(2*m))*sum(((Xval(j,:)*theta)-yval(j,1)).^2)
-%endfor
 
+
+%Xval = [ones(m,1) Xval];
+[theta] = trainLinearReg(X, y, lambda);
+for i = 1:m,
+%  [theta] = trainLinearReg(X(1:i,:), y(1:i,1), lambda);
+  error_train(i,1) = (1/(2*i))*sum(((X(1:i,:)*theta)-y(1:i)).^2);
+%  error_val(i,1) = (1/(2*m))*sum(((Xval(1:i,:)*theta)-yval(1:i,1)).^2);
+endfor
+for j = 1:m,
+  error_val(j,1) = (1/(2*j))*sum(((Xval(1:j,:)*theta)-yval(1:j,1)).^2);
+
+endfor
+%error_val = (1/(2*size(Xval, 1)))*(((Xval*theta)-yval).^2);
 
 
 
