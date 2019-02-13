@@ -52,14 +52,16 @@ error_val   = zeros(m, 1);
 %
 
 % ---------------------- Sample Solution ----------------------
-[theta] = trainLinearReg([ones(m, 1) X], y, lambda);
+X = [ones(m,1) X];
+%Xval = [ones(m,1) Xval];
+[theta] = trainLinearReg(X, y, lambda);
 for i = 1:m,
   error_train(i,1) = (1/(2*m))*sum(((X(i,:)*theta)-y(i,1)).^2)
 endfor
-[theta] = trainLinearReg([ones(m, 1) Xval], yval, lambda);
-for j = 1:m,
-  error_val(j,1) = (1/(2*m))*sum(((Xval(j,:)'*theta')-yval(j,1)).^2)
-endfor
+%[theta] = trainLinearReg(Xval, yval, lambda);
+%for j = 1:m,
+%  error_val(j,1) = (1/(2*m))*sum(((Xval(j,:)*theta)-yval(j,1)).^2)
+%endfor
 
 
 
