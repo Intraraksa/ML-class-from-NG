@@ -15,15 +15,8 @@ X_poly = zeros(n, p);
 %               column of X contains the values of X to the p-th power.
 %
 % 
-for i = 1:size(X_poly,1),
-  for j = 1:p,
-    X_poly(i,j) = X(i)^j;
-  endfor
-endfor
-
-
-
-
+for i = 1:p,
+  X_poly(:,i) = X.^i; 
 
 % =========================================================================
 
