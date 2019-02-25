@@ -21,8 +21,16 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
+for i = 1:size(X,1),
+  for j = 1:K,
+    diff(i,j) = sum((centroids(j,:) - X(i,:)).^2);
+  endfor
+endfor
+%-----------
+for i = 1:size(X,1),
+  [x,ix] = min(diff(i,:));
+  idx(i) = ix;
+endfor
 
 
 
