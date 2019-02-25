@@ -25,11 +25,30 @@ centroids = zeros(K, n);
 %
 % Note: You can use a for-loop over the centroids to compute this.
 %
+%for i = 1:m,
+%  if idx(i) == 1,
+%    K1(a,:) = idx(i);
+%    a = a+1;
+%  elseif idx(i) == 2,
+%    K2(b,:) = idx(i);
+%    b = b+1;
+%  else
+%    K3(c,:) = idx(i);
+%    c = c+1;
+%  endif
+%endfor
 
-
-
-
-
+for i = 1:K,
+  a = 1;
+  collector = zeros(m,n);
+  for j = 1:m,
+    if idx(j) == i,
+      collector(a,:) = X(j,:);
+      a = a+1;
+    endif
+    centroids(i,:) =  (1/(a-1))*sum(collector); 
+  endfor
+endfor
 
 
 
